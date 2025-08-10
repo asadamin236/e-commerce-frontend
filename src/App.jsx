@@ -15,9 +15,25 @@ import ResetPassword from "./pages/ResetPassword";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 
+const Layout = ({ children }) => {
+  const location = useLocation();
+  return (
+    <div className="flex flex-col min-h-screen">
+      {!(
+        location.pathname === "/" ||
+        location.pathname === "/login" ||
+        location.pathname === "/register" ||
+        location.pathname === "/forgot-password" ||
+        location.pathname.startsWith("/reset-password")
+      ) && <Header />}
+      <main className="flex-grow">{children}</main>
+      <Footer />
+    </div>
+  );
+};
+
 const App = () => {
   const [cartItems, setCartItems] = useState([]);
-  const location = useLocation();
 
   const handleAddToCart = (product) => {
     const confirmAdd = window.confirm(`Add "${product.title}" to cart?`);
@@ -52,38 +68,28 @@ const App = () => {
 
   return (
     <Router>
-      <div className="flex flex-col min-h-screen">
-        {!(
-          location.pathname === "/" ||
-          location.pathname === "/login" ||
-          location.pathname === "/register" ||
-          location.pathname === "/forgot-password" ||
-          location.pathname.startsWith("/reset-password")
-        ) && <Header />}
-        <main className="flex-grow">
-          <Routes>
-            <Route path="/" element={<Login />} />
-            <Route path="/login" element={<Login />} />
-            <Route path="/main" element={<Login />} />
-            <Route path="/register" element={<Register />} />
-            <Route path="/forgot-password" element={<ForgotPassword />} />
-            <Route path="/reset-password/:token" element={<ResetPassword />} />
-            <Route path="/home" element={<Home />} />
-            <Route path="/product/:id" element={<ProductPage />} />
-            <Route
-              path="/cart"
-              element={
-                <Cart
-                  cartItems={cartItems}
-                  onUpdateQuantity={handleUpdateQuantity}
-                  onRemoveItem={handleRemoveItem}
-                />
-              }
-            />
-          </Routes>
-        </main>
-        <Footer />
-      </div>
+      <Layout>
+        <Routes>
+          <Route path="/" element={<Login />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/main" element={<Login />} />
+          <Route path="/register" element={<Register />} />
+          <Route path="/forgot-password" element={<ForgotPassword />} />
+          <Route path="/reset-password/:token" element={<ResetPassword />} />
+          <Route path="/home" element={<Home />} />
+          <Route path="/product/:id" element={<ProductPage />} />
+          <Route
+            path="/cart"
+            element={
+              <Cart
+                cartItems={cartItems}
+                onUpdateQuantity={handleUpdateQuantity}
+                onRemoveItem={handleRemoveItem}
+              />
+            }
+          />
+        </Routes>
+      </Layout>
     </Router>
   );
 };

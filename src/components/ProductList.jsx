@@ -10,8 +10,8 @@ const ProductList = ({ filter = "", onAddToCart }) => {
       try {
         const res = await fetch(
           filter.trim()
-            ? "https://e-commerce-application-backend-3qqr.vercel.app/api/ai/recommend"
-            : "https://e-commerce-application-backend-3qqr.vercel.app/api/products",
+            ? "https://e-commerce-application-backend-kohl.vercel.app/api/ai/recommend"
+            : "https://e-commerce-application-backend-kohl.vercel.app/api/products",
           {
             method: filter.trim() ? "POST" : "GET",
             headers: { "Content-Type": "application/json" },

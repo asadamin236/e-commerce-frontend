@@ -12,7 +12,7 @@ const ResetPassword = () => {
     setMessage("");
     try {
       const res = await fetch(
-        "https://e-commerce-application-backend-3qqr.vercel.app/api/auth/reset-password",
+        "https://e-commerce-application-backend-kohl.vercel.app/api/auth/reset-password",
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },

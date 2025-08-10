@@ -12,7 +12,7 @@ const Home = ({ onAddToCart }) => {
   const sendVoiceToServer = async (transcript) => {
     try {
       const response = await fetch(
-        "https://e-commerce-application-backend-3qqr.vercel.app/api/ai/recommend",
+        "https://e-commerce-application-backend-kohl.vercel.app/api/ai/recommend",
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },

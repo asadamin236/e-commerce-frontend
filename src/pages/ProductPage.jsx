@@ -20,7 +20,7 @@ const ProductPage = () => {
     setMessage("");
     try {
       const res = await fetch(
-        "https://e-commerce-application-backend-3qqr.vercel.app/api/orders",
+        "https://e-commerce-application-backend-kohl.vercel.app/api/orders",
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },

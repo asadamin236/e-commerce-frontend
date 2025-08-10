@@ -21,7 +21,7 @@ const Register = () => {
     }
     try {
       const res = await fetch(
-        "https://e-commerce-application-backend-3qqr.vercel.app/api/auth/signup",
+        "https://e-commerce-application-backend-kohl.vercel.app/api/auth/signup",
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
