@@ -1,16 +1,16 @@
 {
   "version": 2,
   "builds": [
-    { "src": "dist/**", "use": "@vercel/static" }
+    { "src": "package.json", "use": "@vercel/static-build" }
   ],
-  "rewrites": [
+  "routes": [
     {
-      "source": "/api/:match*",
-      "destination": "https://e-commerce-application-backend-3qqr.vercel.app/api/:match*"
+      "src": "/api/(.*)",
+      "dest": "https://e-commerce-application-backend-3qqr.vercel.app/api/$1"
     },
     {
-      "source": "/(.*)",
-      "destination": "/index.html"
+      "src": "/(.*)",
+      "dest": "/index.html"
     }
   ]
 }
